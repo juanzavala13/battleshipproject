@@ -1,19 +1,25 @@
 body {
     margin: 60px auto;
     width: 70%;
-    max-width: 950px;
-}
+    max-width: 1750px;
+    background-image: url("http://wallpapercave.com/wp/EWPz3Of.jpg");
+    background-size: 1750px;
+
+  }
 
 h1 {
     font-size: 3em;
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
+    color:  black;
+  }
 }
 
 p, button, input {
     font-size: 1.5em;
     line-height: 1.4em;
-    color: #333;
+    coloe: white;
 	margin-bottom:1em;
+  font-weight: bold;
 }
 
 #gameboard {
@@ -44,4 +50,42 @@ p, button, input {
   position:relative;
   margin:0 auto 2em auto;
   width:500px;
-}
+  }
+
+  /* The Modal (background) */
+  .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content/Box */
+  .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size */
+  }
+
+  /* The Close Button */
+  .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }

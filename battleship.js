@@ -2,6 +2,7 @@
 var rows = 10;
 var cols = 10;
 var squareSize = 50;
+var hitcounter = 1;
 
 // gets the container element
 var gameBoardContainer = document.getElementById("gameboard");
@@ -21,6 +22,7 @@ var letterConversion = {
 	"J": 9
 }
 
+var letterArray = ["A", "B", "C", "D", "E","F", "G", "H", "I", "J"]
 // makes the grid columns and rows
 for (i = 0; i < cols; i++) {
 	for (j = 0; j < rows; j++) {
@@ -34,7 +36,7 @@ for (i = 0; i < cols; i++) {
 		square.className = "boardSquare";
 
 		// THIS IS WHERE YOU WILL ADD CODE FOR PART 1 TO ADD TEXT TO EACH SQUARE
-
+square.textContent = letterArray[j] + (i + 1);
 		// set each grid square's coordinates: multiples of the current row or column number
 		var topPosition = j * squareSize;
 		var leftPosition = i * squareSize;
@@ -42,7 +44,7 @@ for (i = 0; i < cols; i++) {
 		// use CSS absolute positioning to place each grid square on the page
 		square.style.top = topPosition + 'px';
 		square.style.left = leftPosition + 'px';
-	}
+   }
 }
 
 // Hardcoded 2D array to indicate where the ships are placed
@@ -59,8 +61,59 @@ var gameBoard = [
 				[1,0,0,0,0,0,0,0,0,0]
 				]
 
-function fireTorpedo() {
+				var shipsHit  = 0;
 
-	// Your game logic will go here!
+				function fireTorpedo()
+				{ var gameOver = false;
 
+					var userInput = $("Input").val();
+					var rowInput = userInput.substring(0,1);
+					var columnInput = userInput.substring(1,3);
+
+					var rowNumber = letterConversion[rowInput];
+					var columnNumber = columnInput - 1;
+					var coordinates = "s" + rowNumber + columnNumber;
+					var battleship = gameBoard[rowNumber][columnNumber];
+
+					if (battleship == 1)
+					{
+						$("#" + coordinates).css("background-color", "red");
+						hitcounter++;
+					}
+				else {
+					$("#" + coordinates).css("background-color", "grey");
+				}
+
+				console.log(coordinates);
+
+				if(hitcounter == 17) {
+          console.log("destroyed");
+          $("#win").fadeIn();
+
+          // Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
 }
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+				}
+				}
